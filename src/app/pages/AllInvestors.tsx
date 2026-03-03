@@ -42,6 +42,7 @@ export function AllInvestors() {
   const [sortKey, setSortKey] = useState<SortKey>(null);
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(1);
+  const [showFilters, setShowFilters] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -146,18 +147,21 @@ export function AllInvestors() {
   };
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <div className="flex items-start justify-between mb-4">
+    <div className="p-4 md:p-8">
+      <div className="mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
           <div>
-            <h1 className="text-3xl font-semibold text-[#111827] mb-2">All Investors</h1>
-            <p className="text-[#6B7280]">Discover active investors across India</p>
+            <h1 className="text-2xl md:text-3xl font-semibold text-[#111827] mb-1">All Investors</h1>
+            <p className="text-sm text-[#6B7280]">Discover active investors across India</p>
           </div>
-          <div className="flex items-center gap-3">
-            <button onClick={exportCSV} className="flex items-center gap-2 px-4 py-2 text-sm border border-[#E5E7EB] rounded-lg text-[#6B7280] hover:bg-[#F3F4F6] transition-all">
-              <Download className="h-4 w-4" />Export CSV
+          <div className="flex items-center gap-2 flex-wrap">
+            <button onClick={() => setShowFilters(!showFilters)} className="flex md:hidden items-center gap-2 px-3 py-2 text-sm border border-[#E5E7EB] rounded-lg text-[#6B7280] bg-white hover:bg-[#F3F4F6] transition-all">
+              <ChevronDown className={`h-4 w-4 transition-transform ${showFilters ? "rotate-180" : ""}`} />Filters
             </button>
-            <div className="relative w-80" ref={searchRef}>
+            <button onClick={exportCSV} className="flex items-center gap-2 px-3 py-2 text-sm border border-[#E5E7EB] rounded-lg text-[#6B7280] hover:bg-[#F3F4F6] transition-all">
+              <Download className="h-4 w-4" /><span className="hidden sm:inline">Export CSV</span>
+            </button>
+            <div className="relative w-full sm:w-72" ref={searchRef}>
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[#6B7280]" />
               <input
                 type="text"
@@ -196,7 +200,7 @@ export function AllInvestors() {
             <span className="text-sm font-semibold text-[#2563EB]">Your Top Matches</span>
             <span className="text-xs text-[#6B7280]">� personalised for {user.profile.companyName || "your startup"}</span>
           </div>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {bestMatches.map((inv, idx) => (
               <button key={inv.id} onClick={() => setSelectedInvestorId(inv.id)}
                 className="flex items-center gap-3 bg-white rounded-lg border border-[#E5E7EB] px-4 py-3 hover:border-[#2563EB] hover:shadow-sm transition-all text-left">
@@ -214,8 +218,8 @@ export function AllInvestors() {
         </div>
       )}
 
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-3">
+      <div className="flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-6">
+        <div className={`md:col-span-3 ${showFilters ? 'block' : 'hidden'} md:block`}>
           <div className="bg-white rounded-lg border border-[#E5E7EB] p-6 space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="font-semibold text-[#111827]">Filters</h3>
@@ -283,7 +287,7 @@ export function AllInvestors() {
           </div>
         </div>
 
-        <div className="col-span-9">
+        <div className="md:col-span-9">
           <div className="bg-white rounded-lg border border-[#E5E7EB] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">

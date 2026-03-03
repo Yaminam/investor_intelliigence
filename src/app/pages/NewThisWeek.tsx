@@ -29,22 +29,22 @@ export function NewThisWeek() {
   });
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-start justify-between mb-4">
+      <div className="mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
           <div>
-            <h1 className="text-3xl font-semibold text-[#111827] mb-2">New This Week</h1>
-            <p className="text-[#6B7280]">{newInvestors.length} new investors added this week</p>
+            <h1 className="text-2xl md:text-3xl font-semibold text-[#111827] mb-1">New This Week</h1>
+            <p className="text-sm text-[#6B7280]">{newInvestors.length} new investors added this week</p>
           </div>
-          <div className="relative w-96">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[#6B7280]" />
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
             <input
               type="text"
               placeholder="Search by name, fund or sector..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-[#E5E7EB] rounded-lg bg-white text-[#111827] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#2563EB] transition-all"
+              className="w-full pl-9 pr-4 py-2 text-sm border border-[#E5E7EB] rounded-lg bg-white text-[#111827] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#2563EB] transition-all"
             />
           </div>
         </div>

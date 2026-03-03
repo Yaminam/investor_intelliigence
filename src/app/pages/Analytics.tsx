@@ -100,35 +100,35 @@ export function Analytics() {
   ];
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-[#111827] mb-2">Analytics</h1>
+      <div className="mb-6">
+        <h1 className="text-2xl md:text-3xl font-semibold text-[#111827] mb-1">Analytics</h1>
         <p className="text-[#6B7280]">Insights and trends across your investor database</p>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.label}
-              className="bg-white rounded-lg border border-[#E5E7EB] p-6 hover:shadow-sm transition-shadow"
+              className="bg-white rounded-lg border border-[#E5E7EB] p-4 md:p-6 hover:shadow-sm transition-shadow"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-3">
                 <div
-                  className="h-10 w-10 rounded-lg flex items-center justify-center"
+                  className="h-9 w-9 rounded-lg flex items-center justify-center"
                   style={{ backgroundColor: `${stat.color}15` }}
                 >
-                  <Icon className="h-5 w-5" style={{ color: stat.color }} />
+                  <Icon className="h-4 w-4" style={{ color: stat.color }} />
                 </div>
-                <div className="flex items-center gap-1 text-[#10B981] text-sm">
+                <div className="flex items-center gap-1 text-[#10B981] text-xs">
                   <TrendingUp className="h-3 w-3" />
                   <span>{stat.trend}</span>
                 </div>
               </div>
-              <p className="text-3xl font-semibold text-[#111827] mb-1">{stat.value}</p>
+              <p className="text-2xl md:text-3xl font-semibold text-[#111827] mb-1">{stat.value}</p>
               <p className="text-sm text-[#6B7280]">{stat.label}</p>
             </div>
           );
@@ -136,7 +136,7 @@ export function Analytics() {
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Sector Distribution - Bar Chart */}
         <div className="bg-white rounded-lg border border-[#E5E7EB] p-6">
           <h3 className="text-lg font-semibold text-[#111827] mb-6">Investors by Sector</h3>

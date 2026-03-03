@@ -74,7 +74,7 @@ ${userFullName}`;
       <div className="fixed inset-0 bg-black/20 z-40 transition-opacity" onClick={onClose} />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-[440px] bg-white shadow-2xl z-50 flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-full sm:w-[440px] bg-white shadow-2xl z-50 flex flex-col">
         {/* Header */}
         <div className="p-6 border-b border-[#E5E7EB] flex-shrink-0">
           <div className="flex items-start justify-between mb-4">
